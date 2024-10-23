@@ -3,34 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Time Elapsed Since 27th June 2023</title>
+    <title>Time Since Guy Mobey Last Felt the Touch of a Woman</title>
     <style>
+        /* General Reset for Margins and Padding */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Full-Screen Background Setup */
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #00c6ff, #0072ff);
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #f0f0f0;
             margin: 0;
+            color: white;
         }
+
+        /* Container Styling */
         .timer-container {
             text-align: center;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 40px 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
         }
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
         #countup {
-            font-size: 36px;
-            color: #333;
+            font-size: 50px;
+            font-weight: bold;
+            letter-spacing: 2px;
         }
+
+        /* Add subtle animations */
+        #countup {
+            transition: transform 0.2s;
+        }
+
+        #countup:hover {
+            transform: scale(1.05);
+        }
+
     </style>
 </head>
 <body>
 
     <div class="timer-container">
-        <h1>Time Elapsed Since June 27, 2023</h1>
+        <h1>Time Since Guy Mobey Last Felt the Touch of a Woman</h1>
         <div id="countup"></div>
     </div>
 
