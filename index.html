@@ -1,104 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Time Since Guy Mobey Last Felt the Touch of a Woman</title>
-    <style>
-        /* General Reset for Margins and Padding */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        /* Full-Screen Background Setup */
-        body {
-            font-family: 'Arial', sans-serif;
-            height: 100vh;
-            overflow: hidden;
-        }
-
-        /* Image Cover Setup */
-        .background-image {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('https://github.com/fraserchapman2/GUYVIRGINTIMER/blob/main/IMG_4279.JPG?raw=true');
-            background-size: cover; /* Cover the whole screen */
-            background-position: center; /* Center the image */
-            z-index: 1; /* Ensure it's behind the timer */
-        }
-
-        /* Timer Container Styling */
-        .timer-container {
-            position: relative;
-            z-index: 2; /* Bring the timer above the background */
-            text-align: center;
-            padding: 40px 30px;
-            background-color: rgba(0, 0, 0, 0.6);
-            margin: 20px;
-            border-radius: 12px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-            max-width: 90%;
-            margin: auto; /* Center the timer container */
-        }
-
-        h1 {
-            font-size: 28px;
-            margin-bottom: 20px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: white; /* White text color for visibility */
-        }
-
-        #countup {
-            font-size: 50px;
-            font-weight: bold;
-            letter-spacing: 2px;
-            margin-bottom: 20px;
-            color: white; /* White text color for visibility */
-        }
-
-    </style>
+  <meta charset="UTF-8" />
+  <title>Virgin Timer</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      text-align: center;
+      margin-top: 100px;
+      background-color: #111;
+      color: #0f0;
+      transition: background-color 1s ease;
+    }
+    h1 {
+      font-size: 2.5em;
+    }
+    #timer {
+      font-size: 4em;
+      margin-top: 20px;
+    }
+    #special {
+      display: none;
+      font-size: 2em;
+      color: yellow;
+      margin-top: 40px;
+    }
+    .flash {
+      animation: flash-bg 0.5s alternate infinite;
+    }
+    @keyframes flash-bg {
+      from { background-color: #111; }
+      to { background-color: #440044; }
+    }
+  </style>
 </head>
 <body>
+  <h1>Time Since Guy Got Any</h1>
+  <div id="timer">00:00:00</div>
+  <div id="special">🎉 Happy Virgin Timer Anniversary! 🎉 Still going strong 💪</div>
 
-    <div class="background-image"></div> <!-- Fullscreen image -->
+  <script>
+    // Set original timer start date/time in UTC
+    const timerStartUTC = new Date('2023-06-26T12:00:00Z'); // adjust if needed
 
-    <div class="timer-container">
-        <h1>Time Since Guy Mobey Last Felt the Touch of a Woman</h1>
-        <div id="countup"></div>
-    </div>
+    // Target: June 28, 2025 at 12:00 UTC (13:00 UK time)
+    const celebrationTimeUTC = new Date('2025-06-28T12:00:00Z');
 
-    <script>
-        // Set the start date (June 27, 2023)
-        const startDate = new Date('June 27, 2023 00:00:00').getTime();
+    let celebrationTriggered = false;
 
-        // Update the count-up every second
-        const countupFunction = setInterval(function() {
-            // Get the current time
-            const now = new Date().getTime();
+    function updateTimer() {
+      const now = new Date();
+      const elapsedSeconds = Math.floor((now - timerStartUTC) / 1000);
 
-            // Find the distance between now and the start date
-            const distance = now - startDate;
+      const days = Math.floor(elapsedSeconds / (24 * 3600));
+      const hours = Math.floor((elapsedSeconds % (24 * 3600)) / 3600);
+      const minutes = Math.floor((elapsedSeconds % 3600) / 60);
+      const seconds = elapsedSeconds % 60;
 
-            // Time calculations for days, hours, minutes, and seconds
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      document.getElementById('timer').textContent =
+        `${days}d ${String(hours).padStart(2, '0')}h ${String(minutes).padStart(2, '0')}m ${String(seconds).padStart(2, '0')}s`;
 
-            // Display the result in the element with id="countup"
-            document.getElementById("countup").innerHTML = 
-                days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+      // Trigger once when current time >= target time
+      if (!celebrationTriggered && now >= celebrationTimeUTC) {
+        celebrationTriggered = true;
+        triggerAnniversaryEffect();
+      }
+    }
 
-        }, 1000);
-    </script>
+    function triggerAnniversaryEffect() {
+      document.body.classList.add('flash');
+      document.getElementById('special').style.display = 'block';
 
+      // Optional sound effect
+      const audio = new Audio('https://www.soundjay.com/human/woohoo-01.mp3');
+      audio.play().catch(() => console.log("Sound autoplay blocked."));
+    }
+
+    // Start loop
+    updateTimer();
+    setInterval(updateTimer, 1000);
+  </script>
 </body>
 </html>
-
