@@ -40,11 +40,11 @@
   <div id="special">🎉 Happy Virgin Timer Anniversary! 🎉 Still going strong 💪</div>
 
   <script>
-    // Set original timer start date/time in UTC
-    const timerStartUTC = new Date('2023-06-26T12:00:00Z'); // adjust if needed
+    // Start time of the original timer (June 26, 2023 at 12:00 UTC)
+    const timerStartUTC = new Date('2023-06-26T12:00:00Z');
 
-    // Target: June 28, 2025 at 12:00 UTC (13:00 UK time)
-    const celebrationTimeUTC = new Date('2025-06-28T12:00:00Z');
+    // Celebration time for testing: today at 10:39 AM UK time = 09:39 UTC
+    const celebrationTimeUTC = new Date('2025-06-28T09:39:00Z');
 
     let celebrationTriggered = false;
 
@@ -60,7 +60,6 @@
       document.getElementById('timer').textContent =
         `${days}d ${String(hours).padStart(2, '0')}h ${String(minutes).padStart(2, '0')}m ${String(seconds).padStart(2, '0')}s`;
 
-      // Trigger once when current time >= target time
       if (!celebrationTriggered && now >= celebrationTimeUTC) {
         celebrationTriggered = true;
         triggerAnniversaryEffect();
@@ -71,12 +70,10 @@
       document.body.classList.add('flash');
       document.getElementById('special').style.display = 'block';
 
-      // Optional sound effect
       const audio = new Audio('https://www.soundjay.com/human/woohoo-01.mp3');
       audio.play().catch(() => console.log("Sound autoplay blocked."));
     }
 
-    // Start loop
     updateTimer();
     setInterval(updateTimer, 1000);
   </script>
