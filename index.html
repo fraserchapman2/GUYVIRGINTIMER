@@ -1,81 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Virgin Timer</title>
-  <style>
-    body {
-      font-family: 'Arial', sans-serif;
-      text-align: center;
-      margin-top: 100px;
-      background-color: #111;
-      color: #0f0;
-      transition: background-color 1s ease;
-    }
-    h1 {
-      font-size: 2.5em;
-    }
-    #timer {
-      font-size: 4em;
-      margin-top: 20px;
-    }
-    #special {
-      display: none;
-      font-size: 2em;
-      color: yellow;
-      margin-top: 40px;
-    }
-    .flash {
-      animation: flash-bg 0.5s alternate infinite;
-    }
-    @keyframes flash-bg {
-      from { background-color: #111; }
-      to { background-color: #440044; }
-    }
-  </style>
+  <meta charset="UTF-8">
+  <title>GUYVIRGINTIMER - 2 Year Celebration</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Time Since Guy Got Any</h1>
-  <div id="timer">00:00:00</div>
-  <div id="special">🎉 Happy Virgin Timer Anniversary! 🎉 Still going strong 💪</div>
+  <h1>🎉 2-Year Guy Virgin Anniversary 🎉</h1>
 
-  <script>
-    // Start time of the original timer (June 26, 2023 at 12:00 UTC)
-    const timerStartUTC = new Date('2023-06-26T12:00:00Z');
+  <div id="timer">
+    <h2>Time since it all began:</h2>
+    <p id="countup"></p>
+  </div>
 
-    // Celebration time for testing: today at 10:39 AM UK time = 09:39 UTC
-    const celebrationTimeUTC = new Date('2025-06-28T09:39:00Z');
+  <h2>Hall of Fame</h2>
+  <div class="gallery">
+    <img src="images/silent_disco.jpg" alt="Silent Disco Legends">
+    <img src="images/bereal_guy.jpg" alt="BeReal Selfie">
+    <img src="images/dominos_legend.jpg" alt="Domino's and Defenders">
+  </div>
 
-    let celebrationTriggered = false;
+  <p class="caption">Two years. Three icons. One legacy.</p>
 
-    function updateTimer() {
-      const now = new Date();
-      const elapsedSeconds = Math.floor((now - timerStartUTC) / 1000);
+  <!-- Fireworks Library -->
+  <script src="https://cdn.jsdelivr.net/npm/fireworks-js@2.1.0/dist/fireworks.js"></script>
 
-      const days = Math.floor(elapsedSeconds / (24 * 3600));
-      const hours = Math.floor((elapsedSeconds % (24 * 3600)) / 3600);
-      const minutes = Math.floor((elapsedSeconds % 3600) / 60);
-      const seconds = elapsedSeconds % 60;
-
-      document.getElementById('timer').textContent =
-        `${days}d ${String(hours).padStart(2, '0')}h ${String(minutes).padStart(2, '0')}m ${String(seconds).padStart(2, '0')}s`;
-
-      if (!celebrationTriggered && now >= celebrationTimeUTC) {
-        celebrationTriggered = true;
-        triggerAnniversaryEffect();
-      }
-    }
-
-    function triggerAnniversaryEffect() {
-      document.body.classList.add('flash');
-      document.getElementById('special').style.display = 'block';
-
-      const audio = new Audio('https://www.soundjay.com/human/woohoo-01.mp3');
-      audio.play().catch(() => console.log("Sound autoplay blocked."));
-    }
-
-    updateTimer();
-    setInterval(updateTimer, 1000);
-  </script>
+  <!-- Main JavaScript -->
+  <script src="script.js"></script>
 </body>
 </html>
