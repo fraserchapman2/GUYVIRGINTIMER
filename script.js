@@ -10,6 +10,13 @@
   var HOUR = 60 * MINUTE;
   var DAY = 24 * HOUR;
 
+  // Quotes for the home page carousel and the Quotes tab. To add one, add a line here.
+  var QUOTES = [
+    "I don't regret it, and I would do it again...knowing what I knew.",
+    "It's light outside."
+  ];
+  var lastQuote = -1;
+
   // Whole years first (calendar-aware, so leap years are right), then the remainder.
   function breakdown(now) {
     var years = now.getUTCFullYear() - ORIGIN.getUTCFullYear();
@@ -92,6 +99,26 @@
       factEl.textContent = facts[Math.floor(now.getTime() / 6000) % facts.length];
     }
 
+    // Rotating quote on the home page (changes every 8 seconds, fades between them)
+    var quoteEl = document.getElementById("quoteline");
+    if (quoteEl) {
+      var qi = Math.floor(now.getTime() / 8000) % QUOTES.length;
+      if (qi !== lastQuote) {
+        var swap = function () {
+          quoteEl.querySelector(".q").textContent = "“" + QUOTES[qi] + "”";
+          quoteEl.querySelector(".by").textContent = "Guy";
+          quoteEl.classList.remove("fade");
+        };
+        if (lastQuote === -1) {
+          swap();
+        } else {
+          quoteEl.classList.add("fade");
+          setTimeout(swap, 350);
+        }
+        lastQuote = qi;
+      }
+    }
+
     // Stats page
     if (document.querySelector("[data-stat]")) {
       setAll("[data-stat]", "data-stat", stats(now));
@@ -112,6 +139,26 @@
 
   tick();
   setInterval(tick, 1000);
+
+  // Quotes tab: build the cards from the same list
+  var quoteList = document.getElementById("quotes-list");
+  if (quoteList) {
+    for (var q = 0; q < QUOTES.length; q++) {
+      var card = document.createElement("blockquote");
+      card.className = "quote";
+      var tag = document.createElement("span");
+      tag.className = "tag";
+      tag.textContent = "Exhibit " + String.fromCharCode(65 + (q % 26));
+      var text = document.createElement("p");
+      text.textContent = "“" + QUOTES[q] + "”";
+      var by = document.createElement("cite");
+      by.textContent = "Guy";
+      card.appendChild(tag);
+      card.appendChild(text);
+      card.appendChild(by);
+      quoteList.appendChild(card);
+    }
+  }
 
   // Click a photo to enlarge it
   var box = document.getElementById("lightbox");
