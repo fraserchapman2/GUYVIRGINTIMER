@@ -3,23 +3,66 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
   <title>Guy Virgin timer</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Guy Virgin timer</h1>
+  <header class="topbar">
+    <nav class="wrap nav">
+      <a class="brand" href="./">Guy Virgin timer</a>
+      <div class="tabs">
+        <a href="./" aria-current="page">Timer</a>
+        <a href="stats.html">Stats</a>
+        <a href="quotes.html">Quotes</a>
+      </div>
+    </nav>
+  </header>
 
-  <div id="timer">
-    <h2>Time since Guy last felt the touch of a woman</h2>
-    <p id="countup"></p>
-  </div>
+  <main class="wrap">
+    <section class="hero">
+      <h1>Guy Virgin timer</h1>
+      <p class="sub">Time since Guy last felt the touch of a woman</p>
+    </section>
 
-  <h2>Hall of Fame</h2>
-  <div class="gallery">
-    <img src="att.b3g1i4svnsa4Cy7CwmCAucxjJxZdtO-2TIr3Q55Cqh4.jpeg" alt="Silent Disco Legends">
-    <img src="att.rHuZ36qzJE4XQ36Ug3_nnPaABjvKlbBd251x8rzjHlM.jpeg" alt="BeReal Selfie">
-    <img src="att.2Y8rffuxHwFH8nvk_srW1lJLT9fnkFl_0xFBFVbwvXA.jpeg" alt="Domino's and Defenders">
-    <img src="image.jpg" alt="Summer fit check">
+    <section class="clock" aria-live="off">
+      <div class="unit"><span class="n" data-unit="years">0</span><span class="l">Years</span></div>
+      <div class="unit"><span class="n" data-unit="days">0</span><span class="l">Days</span></div>
+      <div class="unit"><span class="n" data-unit="hours">0</span><span class="l">Hours</span></div>
+      <div class="unit"><span class="n" data-unit="minutes">0</span><span class="l">Minutes</span></div>
+      <div class="unit"><span class="n" data-unit="seconds">0</span><span class="l">Seconds</span></div>
+    </section>
+
+    <p class="factline" id="factline"></p>
+
+    <h2 class="section">Hall of Fame</h2>
+    <section class="gallery">
+      <figure>
+        <img src="att.b3g1i4svnsa4Cy7CwmCAucxjJxZdtO-2TIr3Q55Cqh4.jpeg" alt="Silent Disco Legends">
+        <figcaption>Silent Disco Legends</figcaption>
+      </figure>
+      <figure>
+        <img src="att.rHuZ36qzJE4XQ36Ug3_nnPaABjvKlbBd251x8rzjHlM.jpeg" alt="BeReal Selfie">
+        <figcaption>BeReal Selfie</figcaption>
+      </figure>
+      <figure>
+        <img src="att.2Y8rffuxHwFH8nvk_srW1lJLT9fnkFl_0xFBFVbwvXA.jpeg" alt="Domino's and Defenders">
+        <figcaption>Domino's and Defenders</figcaption>
+      </figure>
+      <figure>
+        <img src="image.jpg" alt="Summer fit check">
+        <figcaption>Summer fit check</figcaption>
+      </figure>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">Counting since 28 June 2023. Updated every second.</div>
+  </footer>
+
+  <div id="lightbox" hidden>
+    <img src="" alt="">
+    <p></p>
   </div>
 
   <script src="script.js"></script>
